@@ -1,38 +1,41 @@
 import Pyro4
+from common.models import Employee
 
 @Pyro4.expose
+@Pyro4.behavior(instance_mode="single")
 class EmployeeService:
     def __init__(self):
-        # Instead of storing locally, we'll use Database + Notification
         self.db = Pyro4.Proxy("PYRONAME:DatabaseService")
         self.notify = Pyro4.Proxy("PYRONAME:NotificationService")
 
-    def create_employee(self, name, department=None):
-        emp_id = self.db.get_next_employee_id()
-        employee = {"id": emp_id, "name": name, "department": department}
-        
-        # Save in database
-        self.db.save_employee(employee)
-        
-        # Notify
-        self.notify.send_message(f"Employee {name} created with ID {emp_id}")
-        
-        return f"Employee {name} created successfully (ID={emp_id})"
-
-    def get_employee(self, emp_id):
-        return self.db.load_employee(emp_id)
-
-    def update_department(self, emp_id, department):
-        emp = self.db.load_employee(emp_id)
-        if emp == "Employee not found":
-            return emp
-        emp["department"] = department
+    def create_employee(self, name: str, department_id: int | None = None) -> dict:
+        emp_id = self.db.next_employee_id()
+        emp = Employee(id=emp_id, name=name, department_id=department_id).to_dict()
         self.db.save_employee(emp)
-        self.notify.send_message(f"Employee {emp_id} moved to {department} department")
-        return f"Employee {emp_id} updated to department {department}"
+        self.notify.send_message(f"[Employee] Created {name} (ID={emp_id})")
+        return emp
 
-# Run service
-daemon = Pyro4.Daemon()
-uri = daemon.register(EmployeeService)
-print("EmployeeService is ready. URI:", uri)
-daemon.requestLoop()
+    def get_employee(self, emp_id: int):
+        return self.db.get_employee(emp_id) or {"error": "Employee not found"}
+
+    def list_employees(self):
+        return self.db.list_employees()
+
+    def update_department(self, emp_id: int, department_id: int):
+        emp = self.db.get_employee(emp_id)
+        if not emp: return {"error": "Employee not found"}
+        emp["department_id"] = department_id
+        self.db.save_employee(emp)
+        self.notify.send_message(f"[Employee] {emp_id} moved to department {department_id}")
+        return emp
+
+def main():
+    daemon = Pyro4.Daemon()
+    ns = Pyro4.locateNS()
+    uri = daemon.register(EmployeeService)
+    ns.register("EmployeeService", uri)
+    print("[EmployeeService] Ready.")
+    daemon.requestLoop()
+
+if __name__ == "__main__":
+    main()
