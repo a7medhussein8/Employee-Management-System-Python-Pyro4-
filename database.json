@@ -1,0 +1,65 @@
+{
+  "employees": {
+    "1": {
+      "id": 1,
+      "name": "John",
+      "department_id": null
+    },
+    "2": {
+      "id": 2,
+      "name": "Mosab",
+      "department_id": null
+    }
+  },
+  "departments": {},
+  "attendance": {
+    "1": {
+      "id": 1,
+      "emp_id": 2,
+      "date": "2025-10-09",
+      "status": "present"
+    }
+  },
+  "payroll": {
+    "1": {
+      "id": 1,
+      "emp_id": 1,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "2": {
+      "id": 2,
+      "emp_id": 1,
+      "month": "2026-09",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "3": {
+      "id": 3,
+      "emp_id": 2,
+      "month": "2027-08",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    }
+  },
+  "counters": {
+    "employee": 3,
+    "department": 1,
+    "attendance": 2,
+    "payroll": 4
+  },
+  "notifications": [
+    "[Payroll] Emp 1 2026-03 total=$3000.00",
+    "[Payroll] Emp 1 2026-09 total=$3000.00",
+    "[Employee] Created Mosab (ID=2)",
+    "[Payroll] Emp 2 2027-08 total=$3000.00",
+    "[Attendance] Emp 2 marked present on 2025-10-09"
+  ]
+}

@@ -20,8 +20,12 @@ class AttendanceService:
         self.notify.send_message(f"[Attendance] Emp {emp_id} marked {status} on {date}")
         return rec
 
-    def report_for_employee(self, emp_id: int):
+    # def report_for_employee(self, emp_id: int):
+    #     return self.db.list_attendance_for_employee(emp_id)
+    
+    def list_records(self, emp_id: int):
         return self.db.list_attendance_for_employee(emp_id)
+
 
 def main():
     daemon = Pyro4.Daemon()

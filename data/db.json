@@ -1,0 +1,335 @@
+{
+  "employees": {
+    "1": {
+      "id": 1,
+      "name": "ahmed",
+      "department_id": null
+    },
+    "2": {
+      "id": 2,
+      "name": "ahmed",
+      "department_id": null
+    },
+    "3": {
+      "id": 3,
+      "name": "ahmed",
+      "department_id": null
+    },
+    "4": {
+      "id": 4,
+      "name": "ahmed",
+      "department_id": null
+    },
+    "5": {
+      "id": 5,
+      "name": "ahmed",
+      "department_id": null
+    },
+    "6": {
+      "id": 6,
+      "name": "khaled",
+      "department_id": null
+    },
+    "7": {
+      "id": 7,
+      "name": "Amro",
+      "department_id": null
+    },
+    "8": {
+      "id": 8,
+      "name": "bakri",
+      "department_id": null
+    },
+    "9": {
+      "id": 9,
+      "name": "",
+      "department_id": null
+    }
+  },
+  "departments": {
+    "1": {
+      "id": 1,
+      "name": "employee",
+      "employees": []
+    },
+    "2": {
+      "id": 2,
+      "name": "employee",
+      "employees": []
+    },
+    "3": {
+      "id": 3,
+      "name": "Sales Department",
+      "employees": []
+    },
+    "4": {
+      "id": 4,
+      "name": "Finaince Department",
+      "employees": []
+    },
+    "5": {
+      "id": 5,
+      "name": "Service Department",
+      "employees": []
+    }
+  },
+  "attendance": {
+    "1": {
+      "id": 1,
+      "emp_id": 1,
+      "date": "2025-10-01",
+      "status": "late"
+    },
+    "2": {
+      "id": 2,
+      "emp_id": 9,
+      "date": "2025-10-09",
+      "status": "present"
+    },
+    "3": {
+      "id": 3,
+      "emp_id": 8,
+      "date": "2025-10-01",
+      "status": "present"
+    },
+    "4": {
+      "id": 4,
+      "emp_id": 8,
+      "date": "",
+      "status": "absent"
+    },
+    "5": {
+      "id": 5,
+      "emp_id": 1,
+      "date": "2025-10-07",
+      "status": "absent"
+    },
+    "6": {
+      "id": 6,
+      "emp_id": 8,
+      "date": "2025-10-07",
+      "status": "late"
+    },
+    "7": {
+      "id": 7,
+      "emp_id": 5,
+      "date": "2025-10-17",
+      "status": "late"
+    },
+    "8": {
+      "id": 8,
+      "emp_id": 7,
+      "date": "2025-10-17",
+      "status": "late"
+    },
+    "9": {
+      "id": 9,
+      "emp_id": 1,
+      "date": "2025-10-03",
+      "status": "present"
+    },
+    "10": {
+      "id": 10,
+      "emp_id": 1,
+      "date": "2025-10-03",
+      "status": "present"
+    },
+    "11": {
+      "id": 11,
+      "emp_id": 1,
+      "date": "2025-10-03",
+      "status": "present"
+    },
+    "12": {
+      "id": 12,
+      "emp_id": 3,
+      "date": "2025-10-03",
+      "status": "present"
+    }
+  },
+  "payroll": {
+    "1": {
+      "id": 1,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "2": {
+      "id": 2,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "3": {
+      "id": 3,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "4": {
+      "id": 4,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "5": {
+      "id": 5,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "6": {
+      "id": 6,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "7": {
+      "id": 7,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "8": {
+      "id": 8,
+      "emp_id": 1,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "9": {
+      "id": 9,
+      "emp_id": 4,
+      "month": "2025-12",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "10": {
+      "id": 10,
+      "emp_id": 1,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "11": {
+      "id": 11,
+      "emp_id": 2,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "12": {
+      "id": 12,
+      "emp_id": 2,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "13": {
+      "id": 13,
+      "emp_id": 2,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "14": {
+      "id": 14,
+      "emp_id": 2,
+      "month": "2026-03",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    },
+    "15": {
+      "id": 15,
+      "emp_id": 4,
+      "month": "2026-05",
+      "base": 3000.0,
+      "bonus": 0.0,
+      "deductions": 0.0,
+      "total": 3000.0
+    }
+  },
+  "counters": {
+    "employee": 10,
+    "department": 6,
+    "attendance": 13,
+    "payroll": 16
+  },
+  "notifications": [
+    "[Employee] Created ahmed (ID=1)",
+    "[Employee] Created ahmed (ID=2)",
+    "[Employee] Created ahmed (ID=3)",
+    "[Employee] Created ahmed (ID=4)",
+    "[Employee] Created ahmed (ID=5)",
+    "[Department] Created employee (ID=1)",
+    "[Department] Created employee (ID=2)",
+    "[Employee] Created khaled (ID=6)",
+    "[Employee] Created Amro (ID=7)",
+    "[Department] Created Sales Department (ID=3)",
+    "[Department] Created Finaince Department (ID=4)",
+    "[Department] Created Service Department (ID=5)",
+    "[Attendance] Emp 1 marked late on 2025-10-01",
+    "[Employee] Created bakri (ID=8)",
+    "[Attendance] Emp 9 marked present on 2025-10-09",
+    "[Attendance] Emp 8 marked present on 2025-10-01",
+    "[Attendance] Emp 8 marked absent on ",
+    "[Attendance] Emp 1 marked absent on 2025-10-07",
+    "[Attendance] Emp 8 marked late on 2025-10-07",
+    "[Attendance] Emp 5 marked late on 2025-10-17",
+    "[Attendance] Emp 7 marked late on 2025-10-17",
+    "[Attendance] Emp 1 marked present on 2025-10-03",
+    "[Attendance] Emp 1 marked present on 2025-10-03",
+    "[Attendance] Emp 1 marked present on 2025-10-03",
+    "[Attendance] Emp 3 marked present on 2025-10-03",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2025-12 total=$3000.00",
+    "[Payroll] Emp 4 2025-12 total=$3000.00",
+    "[Payroll] Emp 1 2026-03 total=$3000.00",
+    "[Payroll] Emp 2 2026-03 total=$3000.00",
+    "[Payroll] Emp 2 2026-03 total=$3000.00",
+    "[Payroll] Emp 2 2026-03 total=$3000.00",
+    "[Payroll] Emp 2 2026-03 total=$3000.00",
+    "[Payroll] Emp 4 2026-05 total=$3000.00"
+  ]
+}
