@@ -14,6 +14,16 @@ class EmployeeService:
         self.db.save_employee(emp)
         self.notify.send_message(f"[Employee] Created {name} (ID={emp_id})")
         return emp
+    
+    
+    def delete_employee(self, emp_id: int) -> dict:
+        """Delete an employee by ID."""
+        emp = self.db.get_employee(emp_id)
+        if not emp:
+            return {"error": f"Employee {emp_id} not found"}
+        self.db.delete_employee(emp_id)
+        return {"message": f"Employee {emp_id} deleted successfully"}
+
 
     def get_employee(self, emp_id: int):
         return self.db.get_employee(emp_id) or {"error": "Employee not found"}

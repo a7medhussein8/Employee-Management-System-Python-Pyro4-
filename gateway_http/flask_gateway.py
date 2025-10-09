@@ -38,16 +38,14 @@ def create_employee():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-@app.route("/employees/<int:emp_id>", methods=["DELETE"])
+@app.route("/employee/delete/<int:emp_id>", methods=["DELETE"])
 def delete_employee(emp_id):
-    """Delete an employee"""
     try:
-        result = emp.delete_employee(emp_id)
-        return jsonify(result)
+        with Pyro4.Proxy("PYRONAME:EmployeeService") as emp:
+            result = emp.delete_employee(emp_id)
+            return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 # ---------------------------------------------------------------------
 # DEPARTMENT ROUTES
@@ -73,13 +71,13 @@ def create_department():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-@app.route("/departments/<int:dept_id>", methods=["DELETE"])
+    
+@app.route("/department/delete/<int:dept_id>", methods=["DELETE"])
 def delete_department(dept_id):
-    """Delete a department"""
     try:
-        result = dept.delete_department(dept_id)
-        return jsonify(result)
+        with Pyro4.Proxy("PYRONAME:DepartmentService") as dept:
+            result = dept.delete_department(dept_id)
+            return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -127,15 +125,43 @@ def list_payroll(emp_id):
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/payroll/<int:emp_id>/<month>", methods=["GET"])
-def calc_payroll(emp_id, month):
-    """Calculate payroll for a given employee and month"""
+@app.route("/payroll/calc", methods=["POST"])
+def calc_payroll():
+    """Calculate payroll for a given employee and month."""
     try:
-        result = pay.calculate_for_employee(emp_id, month)
-        return jsonify(result)
+        data = request.get_json()
+        emp_id = int(data.get("emp_id"))
+        month = data.get("month", "")
+        base = float(data.get("salary", 0))
+        bonus = float(data.get("bonus", 0))
+
+        with Pyro4.Proxy("PYRONAME:PayrollService") as payroll:
+            result = payroll.calculate_for_employee(emp_id, month, base, bonus)
+            return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+
+@app.route("/payroll/history/<int:emp_id>", methods=["GET"])
+def get_payroll_history(emp_id):
+    try:
+        with Pyro4.Proxy("PYRONAME:PayrollService") as payroll:
+            result = payroll.list_for_employee(emp_id)
+            
+            # Normalize field names for frontend
+            normalized = []
+            for r in result:
+                normalized.append({
+                    "date": r.get("date") or r.get("created_at") or "-",
+                    "month": r.get("month"),
+                    "base": r.get("base"),
+                    "bonus": r.get("bonus"),
+                    "total": r.get("total")
+                })
+            return jsonify(normalized)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # ---------------------------------------------------------------------
 # NOTIFICATION ROUTES

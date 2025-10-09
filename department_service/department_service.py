@@ -33,6 +33,15 @@ class DepartmentService:
 
         self.notify.send_message(f"[Department] Assigned Emp {emp_id} to Dept {dept_id}")
         return {"ok": True, "department": dept, "employee": emp}
+    
+    def delete_department(self, dept_id: int) -> dict:
+        """Delete a department by ID."""
+        dept = self.db.get_department(dept_id)
+        if not dept:
+            return {"error": f"Department {dept_id} not found"}
+        self.db.delete_department(dept_id)
+        return {"message": f"Department {dept_id} deleted successfully"}
+
 
 def main():
     daemon = Pyro4.Daemon()
