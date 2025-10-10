@@ -12,12 +12,18 @@ export default function TableView({ headers, rows }) {
         </tr>
       </thead>
       <tbody>
-        {rows.length > 0 ? (
-          rows.map((row, idx) => (
-            <tr key={idx}>
-              {headers.map((h, i) => (
-                <td key={i}>{row[h.toLowerCase()] || "-"}</td>
-              ))}
+        {rows && rows.length > 0 ? (
+          rows.map((row, rowIdx) => (
+            <tr key={rowIdx}>
+              {Array.isArray(row)
+                ? row.map((cell, cellIdx) => <td key={cellIdx}>{cell}</td>)
+                : headers.map((h, i) => (
+                    <td key={i}>
+                      {row[h.toLowerCase()] !== undefined
+                        ? row[h.toLowerCase()]
+                        : "-"}
+                    </td>
+                  ))}
             </tr>
           ))
         ) : (

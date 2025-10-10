@@ -114,25 +114,14 @@ def get_attendance(emp_id):
 # PAYROLL ROUTES
 # ---------------------------------------------------------------------
 
-
-@app.route("/payroll/history/<int:emp_id>", methods=["GET"])
-def list_payroll(emp_id):
-    """Return all previous payrolls for a specific employee"""
-    try:
-        result = pay.list_for_employee(emp_id)
-        return jsonify(result)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route("/payroll/calc", methods=["POST"])
+@app.route("/payroll/calculate", methods=["POST"])
 def calc_payroll():
     """Calculate payroll for a given employee and month."""
     try:
         data = request.get_json()
         emp_id = int(data.get("emp_id"))
         month = data.get("month", "")
-        base = float(data.get("salary", 0))
+        base = float(data.get("base", 0))
         bonus = float(data.get("bonus", 0))
 
         with Pyro4.Proxy("PYRONAME:PayrollService") as payroll:
@@ -148,20 +137,24 @@ def get_payroll_history(emp_id):
     try:
         with Pyro4.Proxy("PYRONAME:PayrollService") as payroll:
             result = payroll.list_for_employee(emp_id)
-            
-            # Normalize field names for frontend
+
             normalized = []
             for r in result:
                 normalized.append({
                     "date": r.get("date") or r.get("created_at") or "-",
-                    "month": r.get("month"),
-                    "base": r.get("base"),
-                    "bonus": r.get("bonus"),
-                    "total": r.get("total")
+                    "month": r.get("month") or "-",
+                    "base": r.get("base") or 0,
+                    "bonus": r.get("bonus") or 0,
+                    "deductions": r.get("deductions") or 0,
+                    "total": r.get("total") or 0
                 })
+
+            print("DEBUG Payroll History ->", normalized)  # 👈 helps confirm structure
             return jsonify(normalized)
     except Exception as e:
+        print("ERROR in /payroll/history:", e)
         return jsonify({"error": str(e)}), 500
+
 
 # ---------------------------------------------------------------------
 # NOTIFICATION ROUTES

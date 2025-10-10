@@ -11,13 +11,6 @@ import "./styles.css";
 export default function App() {
   return (
     <BrowserRouter>
-      {/* <nav className="navbar">
-        <Link to="/">Employees</Link>
-        <Link to="/departments">Departments</Link>
-        <Link to="/attendance">Attendance</Link>
-        <Link to="/payroll">Payroll</Link>
-        <Link to="/notifications">Notifications</Link>
-      </nav> */}
       <Navbar/>
       <Routes>
         <Route path="/" element={<EmployeePage />} />
