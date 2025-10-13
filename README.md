@@ -23,5 +23,66 @@ you should see:
 
 	python database_service.py
 
+- employee Service:
+  
+	cd employee_service
+
+	python employee_service.py
+
+- notification Service:
+  
+	cd notification_service
+
+	python notification_service.py
+
+- payroll Service:
+  
+	cd payroll_service
+
+	python payroll_service.py
+
+- attendance Service:
+  
+	cd attendance_Service
+
+	python attendance_Service.py
+
+- department Service:
+  
+	cd department_Service
+
+	python department_Service.py
+
+- Flask Gateway:
+
+  	cd gateway_http
+  
+	python flask_gateway.py
+
+6- Start the frontend (React App):
+
+	cd frontend
+	
+	npm install
+	
+	npm start
+
+7-Then Visit your App: http://localhost:3000.
+
+
+8-  Verify That All Service Are Conneced: 
+
+   Check the console for these messages 
+
+	[DatabaseService] Ready and registered with NameServer
+	[EmployeeService] Ready and registered with NameServer
+	[NotificationService] Ready and registered with NameServer
+	[FlaskGateway] Running on http://127.0.0.1:5000
+	React App running on http://localhost:3000
+
+
+
+
+
 
 
